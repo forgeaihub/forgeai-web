@@ -52,15 +52,15 @@ const content = {
     form: {
       firstName: {
         label: "First Name",
-        placeholder: "John"
+        placeholder: ""
       },
       lastName: {
         label: "Last Name",
-        placeholder: "Doe"
+        placeholder: ""
       },
       email: {
         label: "Email",
-        placeholder: "john.doe@example.com"
+        placeholder: ""
       },
       message: {
         label: "Message",
