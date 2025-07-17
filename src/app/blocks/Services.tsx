@@ -27,7 +27,7 @@ const services = [
 export function Services() {
 
   return (
-    <section className="py-16 px-6 md:px-12 bg-secondary/30">
+    <section className="py-8 px-6 md:px-12 bg-secondary/30">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Our Services</h2>
 
@@ -40,7 +40,7 @@ export function Services() {
             {services.map((service, index) => (
               <Card
                 key={index}
-                className="w-full md:w-[32%] overflow-hidden p-0"
+                className="w-full md:w-[32%] overflow-hidden p-0 shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 {/* Image Placeholder */}
                 <div className="flex items-center justify-center h-48 w-full bg-muted">
