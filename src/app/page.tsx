@@ -2,12 +2,14 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Header } from "./blocks/Header";
 import { Services } from "./blocks/Services";
+import { AboutCompany } from "./blocks/AboutCompany";
 
 export default function Home() {
   return (
     <>
       <Header />
       <Services />
+      <AboutCompany />
       <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pt-24 pb-20 gap-16 sm:p-20 sm:pt-28 font-[family-name:var(--font-geist-sans)]">
         <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
           <Image
