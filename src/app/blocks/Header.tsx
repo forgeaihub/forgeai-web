@@ -23,13 +23,34 @@ export function Header() {
 
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex items-center space-x-6">
-                    <Link href="/about" className="text-gray-700 hover:text-gray-900 font-medium">
+                    <Link 
+                        href="#services" 
+                        className="text-gray-700 hover:text-gray-900 font-medium"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                    >
                         Services
                     </Link>
-                    <Link href="/contact" className="text-gray-700 hover:text-gray-900 font-medium">
+                    <Link 
+                        href="#about" 
+                        className="text-gray-700 hover:text-gray-900 font-medium"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                    >
                         About Us
                     </Link>
-                    <Link href="/portfolio" className="text-gray-700 hover:text-gray-900 font-medium">
+                    <Link 
+                        href="#contact" 
+                        className="text-gray-700 hover:text-gray-900 font-medium"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                    >
                         Contact Us
                     </Link>
                 </nav>
@@ -60,25 +81,37 @@ export function Header() {
                     <div className="absolute top-full left-0 right-0 bg-white shadow-md p-4 md:hidden z-50">
                         <nav className="flex flex-col space-y-4">
                             <Link 
-                                href="/about" 
+                                href="#services" 
                                 className="text-gray-700 hover:text-gray-900 font-medium"
-                                onClick={() => setIsMenuOpen(false)}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                                    setIsMenuOpen(false);
+                                }}
                             >
-                                About
+                                Services
                             </Link>
                             <Link 
-                                href="/contact" 
+                                href="#about" 
                                 className="text-gray-700 hover:text-gray-900 font-medium"
-                                onClick={() => setIsMenuOpen(false)}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                                    setIsMenuOpen(false);
+                                }}
                             >
-                                Contact
+                                About Us
                             </Link>
                             <Link 
-                                href="/portfolio" 
+                                href="#contact" 
                                 className="text-gray-700 hover:text-gray-900 font-medium"
-                                onClick={() => setIsMenuOpen(false)}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                                    setIsMenuOpen(false);
+                                }}
                             >
-                                Portfolio
+                                Contact Us
                             </Link>
                         </nav>
                     </div>
