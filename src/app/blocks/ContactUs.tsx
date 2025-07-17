@@ -44,9 +44,9 @@ export function ContactUs() {
   }
 
   return (
-    <section id="contact" className="py-8 px-6 md:px-12 bg-white-50 dark:bg-gray-900">
+    <section id="contact" className="py-8 px-6 md:px-12 bg-secondary/30 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Contact Us</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">Contact Us</h2>
         <p className="text-muted-foreground text-center mb-8">
           Have questions or want to learn more? Get in touch with our team.
         </p>

@@ -8,7 +8,7 @@ export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <header className="w-full py-4 px-6 md:px-12 bg-white shadow-sm fixed top-0 z-50 h-16">
+        <header className="w-full py-4 px-6 md:px-12 bg-white shadow-lg fixed top-0 z-50">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
                 {/* Logo */}
                 <Link href="/" className="flex items-center">

@@ -8,7 +8,7 @@ export function Copyright() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="w-full py-8 px-6 md:px-12 bg-slate-50 border-t">
+        <footer className="w-full py-8 px-6 md:px-12 bg-secondary/30 border-t shadow-lg">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                     <div className="text-sm text-slate-600">

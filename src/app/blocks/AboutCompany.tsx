@@ -4,9 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export function AboutCompany() {
     return (
-        <section className="py-8 px-6 md:px-12 bg-gray-50">
+        <section className="py-8 px-6 md:px-12 bg-secondary/30">
             <div className="max-w-7xl mx-auto">
-                <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">About US</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">About US</h2>
 
                 <Card className="overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
                     <CardHeader className="px-6 pt-6 pb-0">
