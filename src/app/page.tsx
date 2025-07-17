@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { Header } from "./components/Header";
-import { Services } from "./components/Services";
+import { Header } from "./blocks/Header";
+import { Services } from "./blocks/Services";
 
 export default function Home() {
   return (
