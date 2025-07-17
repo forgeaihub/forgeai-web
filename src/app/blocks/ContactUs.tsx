@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
+import content from "@/lib/content"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -46,9 +47,9 @@ export function ContactUs() {
   return (
     <section id="contact" className="py-8 px-6 md:px-12 bg-secondary/30 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">Contact Us</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">{content.contactUs.title}</h2>
         <p className="text-muted-foreground text-center mb-8">
-          Have questions or want to learn more? Get in touch with our team.
+          {content.contactUs.subtitle}
         </p>
 
         <Card className="overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
@@ -61,9 +62,9 @@ export function ContactUs() {
                     name="firstName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>First Name</FormLabel>
+                        <FormLabel>{content.contactUs.form.firstName.label}</FormLabel>
                         <FormControl>
-                          <Input placeholder="John" {...field} />
+                          <Input placeholder={content.contactUs.form.firstName.placeholder} {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -74,9 +75,9 @@ export function ContactUs() {
                     name="lastName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Last Name</FormLabel>
+                        <FormLabel>{content.contactUs.form.lastName.label}</FormLabel>
                         <FormControl>
-                          <Input placeholder="Doe" {...field} />
+                          <Input placeholder={content.contactUs.form.lastName.placeholder} {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -89,9 +90,9 @@ export function ContactUs() {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email</FormLabel>
+                      <FormLabel>{content.contactUs.form.email.label}</FormLabel>
                       <FormControl>
-                        <Input type="email" placeholder="john.doe@example.com" {...field} />
+                        <Input type="email" placeholder={content.contactUs.form.email.placeholder} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -103,10 +104,10 @@ export function ContactUs() {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Message</FormLabel>
+                      <FormLabel>{content.contactUs.form.message.label}</FormLabel>
                       <FormControl>
                         <Textarea 
-                          placeholder="Tell us how we can help you..." 
+                          placeholder={content.contactUs.form.message.placeholder} 
                           {...field} 
                         />
                       </FormControl>
@@ -116,7 +117,7 @@ export function ContactUs() {
                 />
 
                 <Button type="submit" className="w-full">
-                  Send Message
+                  {content.contactUs.form.submitButton}
                 </Button>
               </form>
             </Form>

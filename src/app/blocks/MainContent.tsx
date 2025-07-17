@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import content from "@/lib/content";
 
 export function MainContent() {
     return (
@@ -12,8 +13,8 @@ export function MainContent() {
                     <div className="w-full md:w-1/2 flex justify-center md:justify-start">
                         <div className="relative w-full max-w-md h-[300px] md:h-[400px]">
                             <Image
-                                src="/globe.svg"
-                                alt="AI Transformation"
+                                src={content.mainContent.image.src}
+                                alt={content.mainContent.image.alt}
                                 fill
                                 className="object-contain"
                                 priority
@@ -24,17 +25,16 @@ export function MainContent() {
                     {/* Content on the right */}
                     <div className="w-full md:w-1/2 text-center md:text-left">
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                            Forge Your AI Future
+                            {content.mainContent.title}
                         </h1>
                         <p className="text-xl md:text-2xl text-gray-700 mb-6">
-                            Transform your business with custom AI agents that automate, 
-                            analyze, and accelerate your workflows.
+                            {content.mainContent.description}
                         </p>
                         <Button 
                             size="lg" 
                             className="bg-indigo-600 hover:bg-indigo-700 text-white"
                         >
-                            Get Started
+                            {content.mainContent.button}
                         </Button>
                     </div>
                 </div>
