@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import content from "@/lib/content";
 
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,8 +14,8 @@ export function Header() {
                 {/* Logo */}
                 <Link href="/" className="flex items-center">
                     <Image 
-                        src="/logo.png" 
-                        alt="ForgeAI Logo" 
+                        src={content.header.logo.src} 
+                        alt={content.header.logo.alt} 
                         width={150} 
                         height={40} 
                         className="h-10 w-auto"
@@ -23,36 +24,19 @@ export function Header() {
 
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex items-center space-x-6">
-                    <Link 
-                        href="#services" 
-                        className="text-gray-700 hover:text-gray-900 font-medium"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-                        }}
-                    >
-                        Services
-                    </Link>
-                    <Link 
-                        href="#about" 
-                        className="text-gray-700 hover:text-gray-900 font-medium"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-                        }}
-                    >
-                        About Us
-                    </Link>
-                    <Link 
-                        href="#contact" 
-                        className="text-gray-700 hover:text-gray-900 font-medium"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                        }}
-                    >
-                        Contact Us
-                    </Link>
+                    {content.header.navigation.map((item, index) => (
+                        <Link 
+                            key={index}
+                            href={item.href} 
+                            className="text-gray-700 hover:text-gray-900 font-medium"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                document.getElementById(item.href.substring(1))?.scrollIntoView({ behavior: 'smooth' });
+                            }}
+                        >
+                            {item.text}
+                        </Link>
+                    ))}
                 </nav>
 
                 {/* Mobile Menu Button */}
@@ -80,39 +64,20 @@ export function Header() {
                 {isMenuOpen && (
                     <div className="absolute top-full left-0 right-0 bg-white shadow-md p-4 md:hidden z-50">
                         <nav className="flex flex-col space-y-4">
-                            <Link 
-                                href="#services" 
-                                className="text-gray-700 hover:text-gray-900 font-medium"
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-                                    setIsMenuOpen(false);
-                                }}
-                            >
-                                Services
-                            </Link>
-                            <Link 
-                                href="#about" 
-                                className="text-gray-700 hover:text-gray-900 font-medium"
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-                                    setIsMenuOpen(false);
-                                }}
-                            >
-                                About Us
-                            </Link>
-                            <Link 
-                                href="#contact" 
-                                className="text-gray-700 hover:text-gray-900 font-medium"
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                                    setIsMenuOpen(false);
-                                }}
-                            >
-                                Contact Us
-                            </Link>
+                            {content.header.navigation.map((item, index) => (
+                                <Link 
+                                    key={index}
+                                    href={item.href} 
+                                    className="text-gray-700 hover:text-gray-900 font-medium"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        document.getElementById(item.href.substring(1))?.scrollIntoView({ behavior: 'smooth' });
+                                        setIsMenuOpen(false);
+                                    }}
+                                >
+                                    {item.text}
+                                </Link>
+                            ))}
                         </nav>
                     </div>
                 )}
