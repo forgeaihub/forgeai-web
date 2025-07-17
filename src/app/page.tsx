@@ -10,10 +10,12 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Services />
-      <AboutCompany />
-      <ContactUs />
-      <Copyright />
+      <main className="pt-16"> {/* Add padding-top equal to header height (h-16 = 64px) */}
+        <Services />
+        <AboutCompany />
+        <ContactUs />
+        <Copyright />
+      </main>
     </>
   );
 }
