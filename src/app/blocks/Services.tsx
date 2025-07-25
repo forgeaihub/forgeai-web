@@ -37,14 +37,14 @@ export function Services() {
                             <SwiperSlide key={index} className="!h-auto">
                                 <Card
                                     className="flex flex-col h-full overflow-hidden p-0 shadow-lg hover:shadow-xl transition-all duration-300">
-                                    {/* Image Placeholder */}
-                                    <div className="flex items-center justify-center h-48 w-full">
+                                    {/* Image Container */}
+                                    <div className="w-full h-48 overflow-hidden rounded-t-lg">
                                         <Image
                                             src={service.imageUrl}
                                             alt={service.title}
-                                            width={200}
+                                            width={400}
                                             height={200}
-                                            className="w-full h-full object-contain p-6"
+                                            className="w-full h-full object-cover"
                                         />
                                     </div>
 
