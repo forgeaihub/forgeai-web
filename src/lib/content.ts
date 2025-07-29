@@ -12,7 +12,7 @@ const content = {
   },
   mainContent: {
     image: {
-      src: "/globe.svg",
+      src: "/background.jpg",
       alt: "AI Transformation"
     },
     title: "Forge Your AI Future",
@@ -31,7 +31,7 @@ const content = {
             "• Slack/Teams notification bots<br/>" +
             "• Backend process automation<br/>" +
             "• Multichannel workflows (email, SMS, API, DB, etc.)",
-        imageUrl: "/n8nservice.jpg",
+        imageUrl: "/n8nimage.gif",
       },
       {
         title: "Sales & Support AI Workflows",

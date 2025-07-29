@@ -1,42 +1,36 @@
 "use client";
 
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import content from "@/lib/content";
 
 export function MainContent() {
     return (
-        <section className="py-16 px-6 md:px-12 bg-gradient-to-r from-blue-50 to-indigo-50">
-            <div className="max-w-7xl mx-auto">
-                <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-                    {/* Image on the left */}
-                    <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-                        <div className="relative w-full max-w-md h-[300px] md:h-[400px]">
-                            <Image
-                                src={content.mainContent.image.src}
-                                alt={content.mainContent.image.alt}
-                                fill
-                                className="object-contain"
-                                priority
-                            />
-                        </div>
-                    </div>
+        <section className="relative py-16 md:py-24 overflow-hidden">
+            {/* Background Image Container */}
+            <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+                <Image
+                    src={content.mainContent.image.src}
+                    alt={content.mainContent.image.alt}
+                    fill
+                    sizes="100vw"
+                    quality={100}
+                    className="object-cover"
+                    priority
+                />
+                {/* Optional overlay if you want to add it back */}
+                {/* <div className="absolute inset-0 bg-black bg-opacity-40"></div> */}
+            </div>
 
-                    {/* Content on the right */}
-                    <div className="w-full md:w-1/2 text-center md:text-left">
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                            {content.mainContent.title}
-                        </h1>
-                        <p className="text-xl md:text-2xl text-gray-700 mb-6">
-                            {content.mainContent.description}
-                        </p>
-                        <Button 
-                            size="lg" 
-                            className="bg-indigo-600 hover:bg-indigo-700 text-white"
-                        >
-                            {content.mainContent.button}
-                        </Button>
-                    </div>
+            {/* Text Content Container */}
+            <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex justify-start">
+                {/* Left aligned text block - takes half width on medium+ screens */}
+                <div className="w-full md:w-1/2 text-left">
+                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                        {content.mainContent.title}
+                    </h1>
+                    <p className="text-xl md:text-2xl text-gray-100 mb-6">
+                        {content.mainContent.description}
+                    </p>
                 </div>
             </div>
         </section>
