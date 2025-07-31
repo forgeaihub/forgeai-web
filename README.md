@@ -20,6 +20,20 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## GitHub Pages Deployment
+
+This project is configured for deployment to GitHub Pages. The configuration in `next.config.ts` includes:
+
+- `basePath` and `assetPrefix` set to the repository name for production builds
+- Image optimization disabled as required for static hosting
+- Static export output configured
+
+To deploy to GitHub Pages:
+
+1. Push changes to the main branch
+2. The GitHub Actions workflow will automatically build and deploy the site
+3. Your site will be available at `https://[username].github.io/forgeai-web/`
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
