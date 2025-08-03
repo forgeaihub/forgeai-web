@@ -2,7 +2,6 @@ import { Header } from "./blocks/Header";
 import { MainContent } from "./blocks/MainContent";
 import { Services } from "./blocks/Services";
 import { AboutCompany } from "./blocks/AboutCompany";
-import { ContactUs } from "./blocks/ContactUs";
 import { Copyright } from "./blocks/Copyright";
 
 export default function Home() {
@@ -13,7 +12,6 @@ export default function Home() {
         <MainContent />
         <Services />
         <AboutCompany />
-        <ContactUs />
         <Copyright />
       </main>
     </>
