@@ -1,6 +1,5 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import content from "@/lib/content";
@@ -9,10 +8,10 @@ export function Copyright() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="w-full py-8 px-6 md:px-12 bg-secondary/30 border-t shadow-lg">
+        <footer className="w-full py-8 px-6 md:px-12 bg-white border-t shadow-lg">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                    <div className="text-sm text-slate-600">
+                    <div className="text-sm text-black">
                         © {currentYear} {content.copyright.companyName}. All rights reserved.
                     </div>
 
@@ -22,7 +21,7 @@ export function Copyright() {
                                 <Link 
                                     key={index}
                                     href={link.href} 
-                                    className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                                    className="text-sm text-black hover:text-black transition-colors"
                                 >
                                     {link.text}
                                 </Link>

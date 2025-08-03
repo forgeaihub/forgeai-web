@@ -1,18 +1,18 @@
 const content = {
   header: {
     logo: {
-      src: "/logo.png",
+      src: "/forgeai-web/logo.png",
       alt: "ForgeAI Logo"
     },
     navigation: [
       { text: "Services", href: "#services" },
       { text: "About Us", href: "#about" },
-      { text: "Contact Us", href: "#contact" }
+      { text: "Platform", href: "/platform" }
     ]
   },
   mainContent: {
     image: {
-      src: "/background.jpg",
+      src: "/forgeai-web/forgeai.png",
       alt: "AI Transformation"
     },
     title: "Forge Your AI Future",
@@ -23,55 +23,46 @@ const content = {
     title: "Our Services",
     serviceList: [
       {
-        title: "Custom AI Agents with n8n ",
-        description: "We build intelligent, no-code/low-code AI agents using n8n that plug directly into your existing systems. Whether it's for sales, support, internal automation, or lead qualification — our agents work around the clock to deliver results.<br/><br/>" +
-            "• Lead capture and nurturing bots<br/>" +
-            "• Customer support chatbots<br/>" +
-            "• AI-driven follow-ups and CRM updates<br/>" +
-            "• Slack/Teams notification bots<br/>" +
-            "• Backend process automation<br/>" +
-            "• Multichannel workflows (email, SMS, API, DB, etc.)",
-        imageUrl: "/n8nimage.gif",
+        title: "Custom AI Agents with n8n",
+        description: "We build intelligent, no-code/low-code AI agents using n8n that plug directly into your existing systems. Whether it's for sales, support, internal automation, or lead qualification — our agents work around the clock to deliver results.\n\n• Lead capture and nurturing bots\n• Customer support chatbots\n• AI-driven follow-ups and CRM updates\n• Slack/Teams notification bots\n• Backend process automation\n• Multichannel workflows (email, SMS, API, DB, etc.)",
+        category: "AI Automation",
+        function: "Workflow",
+        icon: "AssignmentIndOutlinedIcon",
       },
       {
         title: "Sales & Support AI Workflows",
-        description: "Supercharge your customer experience with intelligent agents that handle repetitive tasks, escalate priority issues, and proactively engage leads.<br/><br/>" +
-            "• Live chat & helpdesk integration (Zendesk, Intercom, Freshdesk, etc.)<br/>" +
-            "• Email triage, auto-responses & smart routing<br/>" +
-            "• Upsell & cross-sell automations based on behavior<br/>" +
-            "• Personalized follow-up sequences<br/>" +
-            "• Ticket categorization & sentiment analysis using AI",
-        imageUrl: "/Voice_bot.gif",
+        description: "Supercharge your customer experience with intelligent agents that handle repetitive tasks, escalate priority issues, and proactively engage leads.\n\n• Live chat & helpdesk integration (Zendesk, Intercom, Freshdesk, etc.)\n• Email triage, auto-responses & smart routing\n• Upsell & cross-sell automations based on behavior\n• Personalized follow-up sequences\n• Ticket categorization & sentiment analysis using AI",
+        category: "Customer Experience",
+        function: "Sales & Support",
+        icon: "PlagiarismOutlinedIcon",
       },
       {
         title: "Enterprise Integrations & Automation Architecture",
-        description: "We connect all your apps and services — cloud or on-prem — using scalable automation pipelines powered by n8n and custom nodes.<br/><br/>" +
-            "• API integrations with CRMs, ERPs, HRMs<br/>" +
-            "• Data sync between platforms (HubSpot, Salesforce, etc.)<br/>" +
-            "• Scheduled reports and intelligent alerts<br/>" +
-            "• Secure webhook endpoints for real-time operations<br/>" +
-            "• Event-driven infrastructure (Zapier replacement)",
-        imageUrl: "/crm.gif",
+        description: "We connect all your apps and services — cloud or on-prem — using scalable automation pipelines powered by n8n and custom nodes.\n\n• API integrations with CRMs, ERPs, HRMs\n• Data sync between platforms (HubSpot, Salesforce, etc.)\n• Scheduled reports and intelligent alerts\n• Secure webhook endpoints for real-time operations\n• Event-driven infrastructure (Zapier replacement)",
+        category: "Enterprise Solutions",
+        function: "Integration",
+        icon: "AccountBalanceOutlinedIcon",
       },
       {
         title: "Agent Monitoring & Optimization",
-        description: "We don't just launch bots — we keep them sharp. Our team continuously monitors, tests, and optimizes your automations to ensure performance, accuracy, and compliance.<br/><br/>" +
-            "• Health checks, failover mechanisms<br/>" +
-            "• Auto-debugging and error handling<br/>" +
-            "• Analytics & insights dashboards<br/>" +
-            "• Versioning & rollback<br/>" +
-            "• Model fine-tuning (OpenAI/GPT, etc.)",
-        imageUrl: "/rob_maintenance.gif",
+        description: "We don't just launch bots — we keep them sharp. Our team continuously monitors, tests, and optimizes your automations to ensure performance, accuracy, and compliance.\n\n• Health checks, failover mechanisms\n• Auto-debugging and error handling\n• Analytics & insights dashboards\n• Versioning & rollback\n• Model fine-tuning (OpenAI/GPT, etc.)",
+        category: "Maintenance",
+        function: "Optimization",
+        icon: "AssessmentOutlinedIcon",
       },
       {
         title: "On-Premise & Private Cloud Deployment",
-        description: "Concerned about data security or compliance? We offer private, enterprise-grade n8n deployments with full control and customization.<br/><br/>" +
-            "• Secure on-prem Docker/Kubernetes setups<br/>" +
-            "• SSO & OAuth2 authentication<br/>" +
-            "• Custom node development<br/>" +
-            "• GDPR/ISO27001 compliant architecture<br/>" +
-            "• SLA-backed support & maintenance",
-        imageUrl: "/cloud.gif",
+        description: "Concerned about data security or compliance? We offer private, enterprise-grade n8n deployments with full control and customization.\n\n• Secure on-prem Docker/Kubernetes setups\n• SSO & OAuth2 authentication\n• Custom node development\n• GDPR/ISO27001 compliant architecture\n• SLA-backed support & maintenance",
+        category: "Security",
+        function: "Deployment",
+        icon: "AssignmentIndOutlinedIcon",
+      },
+      {
+        title: "AI-Powered Predictive Analytics",
+        description: "Leverage the power of machine learning to predict future trends and make data-driven decisions for your business.\n\n• Customer behavior prediction\n• Sales forecasting and inventory optimization\n• Anomaly detection and risk assessment\n• Personalized recommendation engines\n• Automated data visualization and reporting\n• Continuous model improvement and adaptation",
+        category: "Data Intelligence",
+        function: "Analytics",
+        icon: "AssessmentOutlinedIcon",
       },
     ]
   },
@@ -109,8 +100,7 @@ const content = {
     companyName: "ForgeAI",
     links: [
       { text: "Privacy Policy", href: "/privacy" },
-      { text: "Terms of Service", href: "/terms" },
-      { text: "Contact Us", href: "/contact" }
+      { text: "Terms of Service", href: "/terms" }
     ]
   }
 };
