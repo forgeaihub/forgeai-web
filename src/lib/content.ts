@@ -1,7 +1,7 @@
 const content = {
   header: {
     logo: {
-      src: "/forgeai-web/logo.png",
+      src: "/logo.png",
       alt: "ForgeAI Logo"
     },
     navigation: [
@@ -12,7 +12,7 @@ const content = {
   },
   mainContent: {
     image: {
-      src: "/forgeai-web/forgeai.png",
+      src: "/forgeai.png",
       alt: "AI Transformation"
     },
     title: "Forge Your AI Future",
