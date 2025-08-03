@@ -3,7 +3,9 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
+import { useState } from "react"
 import content from "@/lib/content"
+import { sendEmail, formatContactEmail } from "@/lib/graphApi"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -31,6 +33,10 @@ interface ContactModalProps {
 }
 
 export function ContactModal({ isOpen, onCloseAction  }: ContactModalProps) {
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const [success, setSuccess] = useState(false);
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -41,12 +47,39 @@ export function ContactModal({ isOpen, onCloseAction  }: ContactModalProps) {
         },
     })
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        // This would typically send the form data to a server
-        console.log(values)
-        alert("Form submitted successfully!")
-        form.reset()
-        onCloseAction()
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        try {
+            setIsLoading(true);
+            setError(null);
+            setSuccess(false);
+
+            // Format the email content
+            const emailSubject = `New Contact Form Submission from ${values.firstName} ${values.lastName}`;
+            const emailBody = formatContactEmail(
+                values.firstName,
+                values.lastName,
+                values.email,
+                values.message
+            );
+
+            // Send the email
+            const result = await sendEmail(emailSubject, emailBody);
+
+            if (result) {
+                setSuccess(true);
+                console.log("Email sent successfully");
+                alert("Form submitted successfully! We'll get back to you soon.");
+                form.reset();
+                onCloseAction();
+            } else {
+                setError("Failed to send email. Please try again later.");
+            }
+        } catch (err) {
+            console.error("Error submitting form:", err);
+            setError("An error occurred. Please try again later.");
+        } finally {
+            setIsLoading(false);
+        }
     }
 
     if (!isOpen) return null;
@@ -142,12 +175,28 @@ export function ContactModal({ isOpen, onCloseAction  }: ContactModalProps) {
                                         )}
                                     />
 
+                                    {error && (
+                                        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                                            <span className="block sm:inline">{error}</span>
+                                        </div>
+                                    )}
+
                                     <div className="flex justify-end gap-4">
-                                        <Button type="button" variant="outline" onClick={onCloseAction} className="cursor-pointer">
+                                        <Button
+                                            type="button"
+                                            variant="outline"
+                                            onClick={onCloseAction}
+                                            className="cursor-pointer"
+                                            disabled={isLoading}
+                                        >
                                             Cancel
                                         </Button>
-                                        <Button type="submit" className="text-white cursor-pointer">
-                                            {content.contactUs.form.submitButton}
+                                        <Button
+                                            type="submit"
+                                            className="text-white cursor-pointer"
+                                            disabled={isLoading}
+                                        >
+                                            {isLoading ? "Sending..." : content.contactUs.form.submitButton}
                                         </Button>
                                     </div>
                                 </form>
