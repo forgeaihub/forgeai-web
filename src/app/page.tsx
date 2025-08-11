@@ -3,6 +3,7 @@ import { MainContent } from "./blocks/MainContent";
 import { Services } from "./blocks/Services";
 import { AboutCompany } from "./blocks/AboutCompany";
 import { Copyright } from "./blocks/Copyright";
+import {Toaster} from "@/components/ui/sonner";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         <Services />
         <AboutCompany />
         <Copyright />
+        <Toaster />
       </main>
     </>
   );
