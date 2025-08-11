@@ -130,7 +130,7 @@ export function ContactModal({ isOpen, onCloseAction  }: ContactModalProps) {
                                                 <FormItem>
                                                     <FormLabel>{content.contactUs.form.firstName.label}</FormLabel>
                                                     <FormControl>
-                                                        <Input name="firstName" placeholder={content.contactUs.form.firstName.placeholder} {...field} />
+                                                        <Input placeholder={content.contactUs.form.firstName.placeholder} {...field} />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -143,7 +143,7 @@ export function ContactModal({ isOpen, onCloseAction  }: ContactModalProps) {
                                                 <FormItem>
                                                     <FormLabel>{content.contactUs.form.lastName.label}</FormLabel>
                                                     <FormControl>
-                                                        <Input name="lastName" placeholder={content.contactUs.form.lastName.placeholder} {...field} />
+                                                        <Input placeholder={content.contactUs.form.lastName.placeholder} {...field} />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -158,7 +158,7 @@ export function ContactModal({ isOpen, onCloseAction  }: ContactModalProps) {
                                             <FormItem>
                                                 <FormLabel>{content.contactUs.form.email.label}</FormLabel>
                                                 <FormControl>
-                                                    <Input type="email" name="email" placeholder={content.contactUs.form.email.placeholder} {...field} />
+                                                    <Input type="email" placeholder={content.contactUs.form.email.placeholder} {...field} />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -173,7 +173,6 @@ export function ContactModal({ isOpen, onCloseAction  }: ContactModalProps) {
                                                 <FormLabel>{content.contactUs.form.message.label}</FormLabel>
                                                 <FormControl>
                                                     <Textarea
-                                                        name="message"
                                                         placeholder={content.contactUs.form.message.placeholder}
                                                         {...field}
                                                     />
