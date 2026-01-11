@@ -2,17 +2,38 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import content from "@/lib/content";
 import { ContactModal } from "../components/ContactModal";
-import {DotLottieReact} from "@lottiefiles/dotlottie-react";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { ResumeRankerDemoModal } from "../components/ResumeRankerDemoModal";
+import { Toaster } from "sonner";
 
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+    const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
 
     const openContactModal = () => setIsContactModalOpen(true);
     const closeContactModal = () => setIsContactModalOpen(false);
+
+    const openDemoModal = () => setIsDemoModalOpen(true);
+    const closeDemoModal = () => setIsDemoModalOpen(false);
+
+    useEffect(() => {
+        const handler = (evt: Event) => {
+            const detail = (evt as CustomEvent).detail as { source?: string } | undefined;
+            if (detail?.source === 'products') {
+                openDemoModal();
+            } else {
+                openContactModal();
+            }
+        };
+        window.addEventListener('open-contact-modal', handler as EventListener);
+        return () => {
+            window.removeEventListener('open-contact-modal', handler as EventListener);
+        };
+    }, []);
 
     return (
         <header className="w-full py-4 px-6 md:px-12 bg-white shadow-lg fixed top-0 z-50">
@@ -139,6 +160,8 @@ export function Header() {
             </div>
 
             <ContactModal isOpen={isContactModalOpen} onCloseAction={closeContactModal} />
+            <ResumeRankerDemoModal isOpen={isDemoModalOpen} onCloseAction={closeDemoModal} />
+            <Toaster position="top-right" richColors />
         </header>
     );
 }

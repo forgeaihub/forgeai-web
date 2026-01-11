@@ -13,6 +13,15 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+
+  // In development, rewrite requests from /forgeai-web to the root so local routing works
+  async rewrites() {
+    if (!isDevelopment) return [];
+    return [
+      { source: '/forgeai-web', destination: '/' },
+      { source: '/forgeai-web/:path*', destination: '/:path*' },
+    ];
+  },
 };
 
 export default nextConfig;
