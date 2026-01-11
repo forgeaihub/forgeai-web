@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
+import { useState } from "react"
 import content from "@/lib/content"
 
 import { Button } from "@/components/ui/button"
@@ -17,6 +18,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { toast } from "sonner"
 
 const formSchema = z.object({
     firstName: z.string().min(1, { message: "First name is required" }),
@@ -31,6 +33,10 @@ interface ContactModalProps {
 }
 
 export function ContactModal({ isOpen, onCloseAction  }: ContactModalProps) {
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const [success, setSuccess] = useState(false);
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -41,12 +47,46 @@ export function ContactModal({ isOpen, onCloseAction  }: ContactModalProps) {
         },
     })
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        // This would typically send the form data to a server
-        console.log(values)
-        alert("Form submitted successfully!")
-        form.reset()
-        onCloseAction()
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        try {
+            setIsLoading(true);
+            setError(null);
+            setSuccess(false);
+
+            // Submit to Formspree
+            const response = await fetch("https://formspree.io/f/mpwlypnk", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                },
+                body: JSON.stringify({
+                    firstName: values.firstName,
+                    lastName: values.lastName,
+                    email: values.email,
+                    message: values.message,
+                }),
+            });
+
+            if (response.ok) {
+                setSuccess(true);
+                toast.success("Message sent", {
+                    position: "top-right",
+                    description: "We'll get back to you soon.",
+                });
+                form.reset();
+                onCloseAction();
+            } else {
+                const data = await response.json().catch(() => null);
+                const msg = data?.errors?.map((e: any) => e.message).join("; ") || "Failed to send email. Please try again later.";
+                setError(msg);
+            }
+        } catch (err) {
+            console.error("Error submitting form:", err);
+            setError("An error occurred. Please try again later.");
+        } finally {
+            setIsLoading(false);
+        }
     }
 
     if (!isOpen) return null;
@@ -81,7 +121,7 @@ export function ContactModal({ isOpen, onCloseAction  }: ContactModalProps) {
                     <Card className="border-0 shadow-none">
                         <CardContent className="p-0">
                             <Form {...form}>
-                                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                                <form onSubmit={form.handleSubmit(onSubmit)} action="https://formspree.io/f/mpwlypnk" method="POST" className="space-y-6">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <FormField
                                             control={form.control}
@@ -142,12 +182,28 @@ export function ContactModal({ isOpen, onCloseAction  }: ContactModalProps) {
                                         )}
                                     />
 
+                                    {error && (
+                                        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                                            <span className="block sm:inline">{error}</span>
+                                        </div>
+                                    )}
+
                                     <div className="flex justify-end gap-4">
-                                        <Button type="button" variant="outline" onClick={onCloseAction} className="cursor-pointer">
+                                        <Button
+                                            type="button"
+                                            variant="outline"
+                                            onClick={onCloseAction}
+                                            className="cursor-pointer"
+                                            disabled={isLoading}
+                                        >
                                             Cancel
                                         </Button>
-                                        <Button type="submit" className="text-white cursor-pointer">
-                                            {content.contactUs.form.submitButton}
+                                        <Button
+                                            type="submit"
+                                            className="text-white cursor-pointer"
+                                            disabled={isLoading}
+                                        >
+                                            {isLoading ? "Sending..." : content.contactUs.form.submitButton}
                                         </Button>
                                     </div>
                                 </form>

@@ -7,6 +7,7 @@ const content = {
     navigation: [
       { text: "Services", href: "#services" },
       { text: "About Us", href: "#about" },
+      { text: "Products", href: "/products" },
       { text: "Platform", href: "/platform" }
     ]
   },
